@@ -24,7 +24,7 @@ import androidx.core.content.ContextCompat;
 import com.jorge.meustitulos.R;
 import com.jorge.meustitulos.controller.TitulosController;
 import com.jorge.meustitulos.model.Titulo;
-import com.jorge.meustitulos.util.ImagemSalva; // Importe a nova classe utilitária
+import com.jorge.meustitulos.util.ImagemSalva;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -33,11 +33,11 @@ public class NovoTituloActivity extends AppCompatActivity {
 
     EditText tituloEditText, notaEditText, comentarioEditText;
     Spinner spinnerTipo, spinnerGenero, spinnerStatus;
-    Button btnAdicionar, btnSelecionarImagem, btnSalvarCapaGaleria;
-    ImageView imageViewPreviewCapa;
+    Button btnAdicionar, btnSalvarCapaGaleria; // Removido btnSelecionarImagem
+    ImageView imageViewPreviewCapa; // Agora é clicável
 
     private Uri selectedImageUri;
-    private int currentUserId; // Para armazenar o ID do usuário logado
+    private int currentUserId;
 
     private ActivityResultLauncher<String> requestPermissionLauncher;
     private ActivityResultLauncher<String> pickImageLauncher;
@@ -48,11 +48,10 @@ public class NovoTituloActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novotitulo);
 
-        // Obter o userId passado da MainActivity
         currentUserId = getIntent().getIntExtra("userId", -1);
         if (currentUserId == -1) {
             Toast.makeText(this, "Erro: ID do usuário não fornecido.", Toast.LENGTH_LONG).show();
-            finish(); // Finaliza a Activity se não houver userId
+            finish();
             return;
         }
 
@@ -65,8 +64,7 @@ public class NovoTituloActivity extends AppCompatActivity {
         spinnerGenero = findViewById(R.id.spinner_genero);
         spinnerStatus = findViewById(R.id.spinner_status);
 
-        btnSelecionarImagem = findViewById(R.id.btn_selecionar_imagem);
-        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa);
+        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa); // Referência à ImageView
         btnSalvarCapaGaleria = findViewById(R.id.btn_salvar_capa_galeria);
 
         ArrayAdapter<CharSequence> adapterTipo = ArrayAdapter.createFromResource(this,
@@ -109,7 +107,8 @@ public class NovoTituloActivity extends AppCompatActivity {
                     }
                 });
 
-        btnSelecionarImagem.setOnClickListener(v -> {
+        // Adicionado OnClickListener diretamente na ImageView
+        imageViewPreviewCapa.setOnClickListener(v -> {
             String permission;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 permission = Manifest.permission.READ_MEDIA_IMAGES;
@@ -183,7 +182,7 @@ public class NovoTituloActivity extends AppCompatActivity {
             novo.setNota(notaValue);
             novo.setStatus(selectedStatus);
             novo.setComentario(comentarioEditText.getText().toString());
-            novo.setUserId(currentUserId); // Define o userId no novo título
+            novo.setUserId(currentUserId);
 
             if (selectedImageUri != null) {
                 novo.setImagemUri(selectedImageUri.toString());

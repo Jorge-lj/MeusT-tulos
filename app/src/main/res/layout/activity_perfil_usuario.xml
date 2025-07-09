@@ -6,7 +6,7 @@
     android:background="#4E7187"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="2dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,47 +25,29 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- ImageView agora é clicável para selecionar a foto de perfil -->
         <ImageView
             android:id="@+id/imageView_foto_perfil"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circle_shape"
+            android:clickable="true"
             android:clipToOutline="true"
             android:contentDescription="Foto de Perfil"
+            android:focusable="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/placeholder_profile_picture"
-            android:layout_marginBottom="5dp"/>
+            android:src="@drawable/placeholder_profile_picture" />
 
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="317dp"
-            android:layout_height="75dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_selecionar_foto_perfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#05253D"
-                android:text="Alterar Foto"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btn_salvar_foto_perfil_galeria"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#05253D"
-                android:text="Salvar na Galeria"
-                android:textSize="14sp" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_salvar_foto_perfil_galeria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#05253D"
+            android:text="Salvar Foto na Galeria"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/nome_completo_perfil"
@@ -73,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:hint="Nome Completo"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
@@ -103,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Nova Senha (caso queira)"
+            android:hint="Nova Senha (deixe em branco para não alterar)"
             android:inputType="textPassword"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
@@ -123,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#011019"
+            android:backgroundTint="#020C12"
             android:text="Excluir Conta"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
@@ -131,3 +113,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
+

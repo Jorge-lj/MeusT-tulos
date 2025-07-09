@@ -25,7 +25,6 @@ import com.jorge.meustitulos.R;
 import com.jorge.meustitulos.controller.TitulosController;
 import com.jorge.meustitulos.model.Titulo;
 import com.jorge.meustitulos.util.ImagemSalva;
-import com.jorge.meustitulos.util.ImagemSalva; // Importe a nova classe utilitária
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -34,13 +33,13 @@ public class EditarTituloActivity extends AppCompatActivity {
 
     private EditText tituloEditText, notaEditText, comentarioEditText;
     private Spinner spinnerTipo, spinnerGenero, spinnerStatus;
-    private Button btnSalvarAlteracoes, btnSelecionarImagem, btnSalvarCapaGaleria;
-    private ImageView imageViewPreviewCapa;
+    private Button btnSalvarAlteracoes, btnSalvarCapaGaleria; // Removido btnSelecionarImagem
+    private ImageView imageViewPreviewCapa; // Agora é clicável
 
     private TitulosController titulosController;
     private Titulo tituloAtual;
     private Uri selectedImageUri;
-    private int currentUserId; // Para armazenar o ID do usuário logado
+    private int currentUserId;
 
     private ActivityResultLauncher<String> requestPermissionLauncher;
     private ActivityResultLauncher<String> pickImageLauncher;
@@ -52,11 +51,10 @@ public class EditarTituloActivity extends AppCompatActivity {
 
         titulosController = new TitulosController(this);
 
-        // Obter o userId passado da MainActivity
         currentUserId = getIntent().getIntExtra("userId", -1);
         if (currentUserId == -1) {
             Toast.makeText(this, "Erro: ID do usuário não fornecido.", Toast.LENGTH_LONG).show();
-            finish(); // Finaliza a Activity se não houver userId
+            finish();
             return;
         }
 
@@ -67,8 +65,7 @@ public class EditarTituloActivity extends AppCompatActivity {
         spinnerTipo = findViewById(R.id.spinner_tipo);
         spinnerGenero = findViewById(R.id.spinner_genero);
         spinnerStatus = findViewById(R.id.spinner_status);
-        btnSelecionarImagem = findViewById(R.id.btn_selecionar_imagem);
-        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa);
+        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa); // Referência à ImageView
         btnSalvarCapaGaleria = findViewById(R.id.btn_salvar_capa_galeria);
 
         ArrayAdapter<CharSequence> adapterTipo = ArrayAdapter.createFromResource(this,
@@ -110,7 +107,7 @@ public class EditarTituloActivity extends AppCompatActivity {
                     }
                 });
 
-        btnSelecionarImagem.setOnClickListener(v -> {
+        imageViewPreviewCapa.setOnClickListener(v -> {
             String permission;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 permission = Manifest.permission.READ_MEDIA_IMAGES;
@@ -153,7 +150,6 @@ public class EditarTituloActivity extends AppCompatActivity {
         int tituloId = getIntent().getIntExtra("titulo_id", -1);
         if (tituloId != -1) {
             tituloAtual = titulosController.buscarTituloPorId(tituloId);
-            // Verifique se o título pertence ao usuário logado
             if (tituloAtual != null && tituloAtual.getUserId() == currentUserId) {
                 preencherCampos(tituloAtual);
             } else {
@@ -231,7 +227,6 @@ public class EditarTituloActivity extends AppCompatActivity {
         tituloAtual.setNota(novaNota);
         tituloAtual.setStatus(novoStatus);
         tituloAtual.setComentario(novoComentario);
-        // Garante que o userId seja mantido
         tituloAtual.setUserId(currentUserId);
         if (selectedImageUri != null) {
             tituloAtual.setImagemUri(selectedImageUri.toString());

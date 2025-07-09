@@ -5,21 +5,21 @@
     android:background="#4E7187"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:padding="21dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="Novo Título"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="672dp"
+        android:layout_height="602dp"
         android:orientation="vertical"
         android:padding="24dp">
 
@@ -32,37 +32,87 @@
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Tipo:"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <Spinner
-            android:id="@+id/spinner_tipo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:popupBackground="#464646"
-            android:spinnerMode="dropdown" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="Tipo:"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="4dp"
+                android:textSize="16sp" />
 
-        <TextView
+            <Spinner
+                android:id="@+id/spinner_tipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:backgroundTint="#BEBDBD"
+                android:popupBackground="#1F292F"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Gênero:"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <Spinner
-            android:id="@+id/spinner_genero"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="Gênero:"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="4dp"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_genero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:backgroundTint="#BEBDBD"
+                android:popupBackground="#1F292F"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:popupBackground="#464646"
-            android:spinnerMode="dropdown" />
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="Status:"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="4dp"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:backgroundTint="#BEBDBD"
+                android:popupBackground="#1F292F"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/nota"
@@ -75,22 +125,6 @@
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Status:"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-
-        <Spinner
-            android:id="@+id/spinner_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:popupBackground="#464646"
-            android:spinnerMode="dropdown" />
-
         <EditText
             android:id="@+id/comentario"
             android:layout_width="match_parent"
@@ -101,56 +135,35 @@
             android:textColorHint="#FFFFFF"
             android:textSize="16sp" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_selecionar_imagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#05253D"
-                android:text="Selecionar Imagem"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btn_salvar_capa_galeria"
-                android:layout_width="166dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#05253D"
-                android:text="Salvar na Galeria"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
         <ImageView
             android:id="@+id/imageView_preview_capa"
-            android:layout_width="71dp"
-            android:layout_height="97dp"
+            android:layout_width="94dp"
+            android:layout_height="112dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:clickable="true"
             android:contentDescription="Pré-visualização da capa do título"
+            android:focusable="true"
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder_capa" />
+
+        <Button
+            android:id="@+id/btn_salvar_capa_galeria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#05253D"
+            android:text="Salvar Capa na Galeria"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btn_adicionar_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#05253D"
             android:text="Adicionar"
-            android:textSize="18sp" />
-
-
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

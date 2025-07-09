@@ -12,7 +12,7 @@ import com.jorge.meustitulos.model.Usuario;
 public class MeusTitulosDB extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "meustitulo.db";
-    private static final int DB_VERSION = 5; // Versão do banco de dados aumentada para 5
+    private static final int DB_VERSION = 5;
 
     private static final String TABLE_TITULOS = "Titulos";
     private static final String TABLE_USUARIOS = "Usuarios";
@@ -26,7 +26,7 @@ public class MeusTitulosDB extends SQLiteOpenHelper {
     private static final String KEY_STATUS = "status";
     private static final String KEY_COMENTARIO = "comentario";
     private static final String KEY_IMAGEM_URI = "imagemUri";
-    private static final String KEY_USER_ID = "userId"; // Nova coluna para vincular títulos a usuários
+    private static final String KEY_USER_ID = "userId";
 
     private static final String KEY_NOME_COMPLETO = "nomeCompleto";
     private static final String KEY_EMAIL = "email";
@@ -50,7 +50,7 @@ public class MeusTitulosDB extends SQLiteOpenHelper {
                 + KEY_STATUS + " TEXT,"
                 + KEY_COMENTARIO + " TEXT,"
                 + KEY_IMAGEM_URI + " TEXT,"
-                + KEY_USER_ID + " INTEGER" + ")"; // Adicionando a coluna userId
+                + KEY_USER_ID + " INTEGER" + ")";
         sqLiteDatabase.execSQL(CREATE_TITULOS_TABLE);
 
         String CREATE_USUARIOS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_USUARIOS + "("

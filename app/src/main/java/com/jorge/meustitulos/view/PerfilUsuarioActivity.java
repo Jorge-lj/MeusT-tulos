@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,8 +36,8 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
     private static final String TAG = "PerfilDebug";
 
     private EditText nomeCompletoEditText, emailEditText, nomeUsuarioEditText, senhaEditText;
-    private Button btnSalvarAlteracoes, btnExcluirConta, btnSelecionarFotoPerfil, btnSalvarFotoPerfilGaleria;
-    private ImageView imageViewFotoPerfil;
+    private Button btnSalvarAlteracoes, btnExcluirConta, btnSalvarFotoPerfilGaleria; // Removido btnSelecionarFotoPerfil
+    private ImageView imageViewFotoPerfil; // Agora é clicável
 
     private UsuarioController usuariosController;
     private Usuario usuarioAtual;
@@ -66,8 +65,7 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
         senhaEditText = findViewById(R.id.senha_perfil);
         btnSalvarAlteracoes = findViewById(R.id.btn_salvar_alteracoes_perfil);
         btnExcluirConta = findViewById(R.id.btn_excluir_conta);
-        btnSelecionarFotoPerfil = findViewById(R.id.btn_selecionar_foto_perfil);
-        imageViewFotoPerfil = findViewById(R.id.imageView_foto_perfil);
+        imageViewFotoPerfil = findViewById(R.id.imageView_foto_perfil); // Referência à ImageView
         btnSalvarFotoPerfilGaleria = findViewById(R.id.btn_salvar_foto_perfil_galeria);
 
         requestPermissionLauncher = registerForActivityResult(
@@ -96,7 +94,7 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
                     }
                 });
 
-        btnSelecionarFotoPerfil.setOnClickListener(v -> {
+        imageViewFotoPerfil.setOnClickListener(v -> {
             String permission;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 permission = Manifest.permission.READ_MEDIA_IMAGES;
@@ -287,7 +285,7 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
         editor.remove(KEY_USERNAME);
         editor.remove(KEY_PASSWORD);
         editor.remove(KEY_LOGGED_IN_USERNAME);
-        editor.remove(KEY_LOGGED_IN_USER_ID); // Remove o ID do usuário também
+        editor.remove(KEY_LOGGED_IN_USER_ID);
         editor.apply();
         Log.d(TAG, "clearLoginCredentialsAndRedirectToLogin: Credenciais de login limpas e redirecionando para LoginActivity.");
 
