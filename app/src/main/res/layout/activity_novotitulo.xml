@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4E7187"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo Título"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="672dp"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <EditText
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Tipo:"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:popupBackground="#464646"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Gênero:"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_genero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:popupBackground="#464646"
+            android:spinnerMode="dropdown" />
+
+        <EditText
+            android:id="@+id/nota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nota pessoal (0 a 10)"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Status:"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:popupBackground="#464646"
+            android:spinnerMode="dropdown" />
+
+        <EditText
+            android:id="@+id/comentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Comentário (Opcional)"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_selecionar_imagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#05253D"
+                android:text="Selecionar Imagem"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_salvar_capa_galeria"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#05253D"
+                android:text="Salvar na Galeria"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView_preview_capa"
+            android:layout_width="71dp"
+            android:layout_height="97dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Pré-visualização da capa do título"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_capa" />
+
+        <Button
+            android:id="@+id/btn_adicionar_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#05253D"
+            android:text="Adicionar"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

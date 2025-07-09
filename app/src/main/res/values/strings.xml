@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">meusTitulos</string>
+
+    <string-array name="tipos_titulos_array">
+        <item>Selecione um Tipo</item>
+        <item>Animação</item>
+        <item>Filme</item>
+        <item>Documentário</item>
+        <item>Anime</item>
+        <item>Série</item>
+        <item>Desenho</item>
+    </string-array>
+
+    <string-array name="generos_array">
+        <item>Selecione um Gênero</item>
+        <item>Ação</item>
+        <item>Aventura</item>
+        <item>Comédia</item>
+        <item>Drama</item>
+        <item>Fantasia</item>
+        <item>Ficção Científica</item>
+        <item>Terror</item>
+        <item>Suspense</item>
+        <item>Romance</item>
+        <item>Documentário</item>
+        <item>Musical</item>
+        <item>Crime</item>
+        <item>Mistério</item>
+        <item>Guerra</item>
+        <item>Histórico</item>
+        <item>Esporte</item>
+        <item>Faroeste</item>
+        <item>Infantil</item>
+        <item>Animação</item>
+    </string-array>
+
+    <string-array name="status_array">
+        <item>Selecione um Status</item>
+        <item>Assistido</item>
+        <item>Assistindo</item>
+        <item>Não Assistido</item>
+        <item>Em Breve</item>
+    </string-array>
+
+</resources>

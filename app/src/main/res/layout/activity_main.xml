@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4E7187"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meus Títulos"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/meustitulos_removebg_preview__1_"
+        android:contentDescription="Logo do aplicativo Meus Títulos" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTitulos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_titulo" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:padding="16dp">
+
+        <!-- FAB para adicionar título (mantido à direita) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_input_add"
+            app:backgroundTint="#05253D"
+            app:tint="@android:color/white"
+            android:contentDescription="Adicionar novo título" />
+
+        <!-- FAB para Perfil de Usuário (movido para a esquerda) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAPerfilUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_myplaces"
+            app:backgroundTint="#05253D"
+            app:tint="@android:color/white"
+            android:contentDescription="Perfil de Usuário" />
+
+    </FrameLayout>
+
+</LinearLayout>

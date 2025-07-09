@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#4E7187">
+
+    <ImageView
+        android:id="@+id/logo_login"
+        android:layout_width="269dp"
+        android:layout_height="271dp"
+        app:srcCompat="@drawable/meustitulos_removebg_preview__1_"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Bem-vindo!"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/nome_usuario_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Usuário"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:autofillHints="username"
+        android:inputType="text"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/senha_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:layout_marginTop="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:autofillHints="password"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        android:textSize="18sp"
+        android:backgroundTint="#05253D"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/btn_limpar_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limpar Login Salvo"
+        android:textColor="#C9C9C9"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Não tem uma conta ainda?  "
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastre-se"
+            android:textAlignment="center"
+            android:textColor="#C9C9C9"
+            android:textSize="16sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"/>
+
+    </LinearLayout>
+
+</LinearLayout>

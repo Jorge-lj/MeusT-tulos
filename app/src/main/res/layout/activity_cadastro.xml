@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4E7187"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/logo_cadastro"
+        android:layout_width="269dp"
+        android:layout_height="271dp"
+        app:srcCompat="@drawable/meustitulos_removebg_preview__1_"
+        android:contentDescription="@string/app_name"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/nome_completo_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome Completo"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:autofillHints="name"
+            android:inputType="textPersonName"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/email_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/nome_usuario_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome de usuário"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/senha_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Criar senha"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:autofillHints="newPassword"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/confirmar_senha_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Confirmar senha"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:autofillHints="newPassword"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#05253D"
+        android:text="Criar Conta"
+        android:textSize="18sp" />
+
+</LinearLayout>

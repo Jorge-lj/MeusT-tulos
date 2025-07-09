@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4E7187"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Meu Perfil"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/imageView_foto_perfil"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/circle_shape"
+            android:clipToOutline="true"
+            android:contentDescription="Foto de Perfil"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_profile_picture"
+            android:layout_marginBottom="5dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="317dp"
+            android:layout_height="75dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_selecionar_foto_perfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#05253D"
+                android:text="Alterar Foto"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_salvar_foto_perfil_galeria"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#05253D"
+                android:text="Salvar na Galeria"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/nome_completo_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Nome Completo"
+            android:textColor="#000000"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/email_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/nome_usuario_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nome de Usuário"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/senha_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nova Senha (caso queira)"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_salvar_alteracoes_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#05253D"
+            android:text="Salvar Alterações"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_excluir_conta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#011019"
+            android:text="Excluir Conta"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
