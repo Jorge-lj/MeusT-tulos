@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements TituloAdapter.OnI
     @Override
     protected void onResume() {
         super.onResume();
-        carregarTitulos(); // Recarrega os títulos sempre que a Activity volta ao foco
+        carregarTitulos();
     }
 
     private void carregarTitulos() {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements TituloAdapter.OnI
             Titulo tituloSelecionado = titulosList.get(position);
             Intent intent = new Intent(MainActivity.this, EditarTituloActivity.class);
             intent.putExtra("titulo_id", tituloSelecionado.getId());
-            intent.putExtra("userId", currentUserId); // Passa o userId para EditarTituloActivity
+            intent.putExtra("userId", currentUserId);
             startActivity(intent);
         }
     }
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements TituloAdapter.OnI
                     .setTitle("Confirmar Exclusão")
                     .setMessage("Deseja realmente remover o título: \"" + tituloParaRemover.getTitulo() + "\"?")
                     .setPositiveButton("Sim", (dialog, which) -> {
-                        // Passa o userId para remover o título
                         boolean removidoDB = titulosController.removerTitulo(tituloParaRemover.getId(), currentUserId);
 
                         if (removidoDB) {
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements TituloAdapter.OnI
                         return;
                     }
 
-                    // Passa o userId para atualizar o status do título
                     boolean atualizadoDB = titulosController.atualizarTituloStatus(titulo.getId(), novoStatus, currentUserId);
 
                     if (atualizadoDB) {

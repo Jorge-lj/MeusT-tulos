@@ -147,7 +147,6 @@ public class NovoTituloActivity extends AppCompatActivity {
             }
         });
 
-
         btnAdicionar.setOnClickListener(v -> {
             String selectedTipo = spinnerTipo.getSelectedItem().toString();
             String selectedGenero = spinnerGenero.getSelectedItem().toString();

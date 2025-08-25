@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                     Usuario usuarioLogado = controller.buscarUsuarioPorNomeUsuario(nomeUsuario);
                     if (usuarioLogado != null) {
                         saveLoggedInUsername(nomeUsuario);
-                        saveLoggedInUserId(usuarioLogado.getId()); // Salva o ID do usuário logado
+                        saveLoggedInUserId(usuarioLogado.getId());
                     }
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.remove(KEY_USERNAME);
         editor.remove(KEY_PASSWORD);
         editor.remove(KEY_LOGGED_IN_USERNAME);
-        editor.remove(KEY_LOGGED_IN_USER_ID); // Remove o ID do usuário também
+        editor.remove(KEY_LOGGED_IN_USER_ID);
         editor.apply();
 
         nomeUsuarioEditText.setText("");

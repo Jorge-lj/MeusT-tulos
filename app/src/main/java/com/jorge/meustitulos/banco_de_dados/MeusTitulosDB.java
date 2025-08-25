@@ -163,13 +163,13 @@ public class MeusTitulosDB extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_USUARIOS + " WHERE " + KEY_NOME_USUARIO + " = ?", new String[]{nomeUsuario});
     }
 
-    // NOVO: Buscar títulos filtrados por userId
+    // Buscar títulos filtrados por userId
     public Cursor buscarTitulosPorUsuario(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_TITULOS + " WHERE " + KEY_USER_ID + " = ?", new String[]{String.valueOf(userId)});
     }
 
-    // Método original buscarTitulos() pode ser mantido ou removido se não for mais usado
+    // Método buscarTitulos()
     public Cursor buscarTitulos() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_TITULOS, null);

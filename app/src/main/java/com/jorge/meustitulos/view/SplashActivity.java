@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void comutartelaSplash() {
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
