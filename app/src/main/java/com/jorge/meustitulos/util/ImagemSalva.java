@@ -22,74 +22,109 @@ import java.io.OutputStream;
 
 public class ImagemSalva {
 
-    // Salva um Bitmap na galeria do Android
+    //Salva um Bitmap na galeria do Android
     public static boolean saveBitmapToGallery(Context context, Bitmap bitmap, String filename) {
-        // Verifica se o nome do arquivo foi fornecido; caso contrário, gera um nome padrão
         if (filename == null || filename.isEmpty()) {
             filename = System.currentTimeMillis() + ".jpg";
         }
 
-        // Prepara os valores para o MediaStore
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-
-        // Define o caminho relativo para Android 10 (API 29) e superior
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            values.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + "MeusTitulos");
-            values.put(MediaStore.Images.Media.IS_PENDING, 1); // Marca como pendente até o salvamento ser concluído
-        } else {
-            // Para versões anteriores, usa o diretório público de imagens
-            File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MeusTitulos");
-            if (!directory.exists()) {
-                directory.mkdirs(); // Cria o diretório se não existir
-            }
-            File imageFile = new File(directory, filename);
-            values.put(MediaStore.Images.Media.DATA, imageFile.getAbsolutePath());
-        }
-
         ContentResolver resolver = context.getContentResolver();
-        Uri uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Uri uri = null;
+        OutputStream os = null;
 
-        if (uri != null) {
-            try (OutputStream os = resolver.openOutputStream(uri)) {
-                if (os != null) {
-                    // Comprime o bitmap para JPEG e escreve no OutputStream
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, os);
-                    os.flush();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        values.clear();
-                        values.put(MediaStore.Images.Media.IS_PENDING, 0); // Remove a marca de pendente
-                        resolver.update(uri, values, null, null); // Atualiza o registro no MediaStore
-                    }
-                    Toast.makeText(context, "Imagem salva na galeria!", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            } catch (IOException e) {
-                Toast.makeText(context, "Erro ao salvar imagem: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                e.printStackTrace();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                // Android 10+ → usa MediaStore com caminho relativo
+                values.put(MediaStore.Images.Media.RELATIVE_PATH,
+                        Environment.DIRECTORY_PICTURES + "/MeusTitulos");
+                values.put(MediaStore.Images.Media.IS_PENDING, 1);
+            } else {
+                // Android 9 ou menor → usa diretório público
+                File directory = new File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                        "MeusTitulos"
+                );
+                if (!directory.exists()) directory.mkdirs();
+                File imageFile = new File(directory, filename);
+                values.put(MediaStore.Images.Media.DATA, imageFile.getAbsolutePath());
             }
-        } else {
-            Toast.makeText(context, "Erro: Não foi possível criar URI para salvar imagem.", Toast.LENGTH_LONG).show();
+
+            uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            if (uri == null) {
+                Toast.makeText(context, "Erro: URI não criada", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            os = resolver.openOutputStream(uri);
+            if (os == null) {
+                Toast.makeText(context, "Erro: não foi possível abrir OutputStream", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            boolean saved = bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            os.flush();
+
+            if (!saved) {
+                Toast.makeText(context, "Erro ao comprimir imagem.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                // Finaliza salvamento removendo IS_PENDING
+                ContentValues updateValues = new ContentValues();
+                updateValues.put(MediaStore.Images.Media.IS_PENDING, 0);
+                resolver.update(uri, updateValues, null, null);
+            } else {
+                // Força a galeria a escanear a imagem
+                context.sendBroadcast(
+                        new android.content.Intent(
+                                android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                                uri
+                        )
+                );
+            }
+
+            Toast.makeText(context,
+                    "Imagem salva em Pictures/MeusTitulos!",
+                    Toast.LENGTH_SHORT).show();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Erro ao salvar imagem: " + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
+            return false;
+
+        } finally {
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (IOException ignored) {
+                }
+            }
         }
-        return false;
     }
 
-    // Verifica e solicita as permissões de armazenamento necessárias
-    public static void checkAndRequestPermissions(Context context, ActivityResultLauncher<String> requestPermissionLauncher) {
+    // Verifica e solicita as permissões necessárias para acessar imagens
+    public static void checkAndRequestPermissions(Context context,
+                                                  ActivityResultLauncher<String> requestPermissionLauncher) {
         String permission;
-        // Determina a permissão correta com base na versão do Android
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            permission = Manifest.permission.READ_MEDIA_IMAGES; // Para Android 13+
+            permission = Manifest.permission.READ_MEDIA_IMAGES; // Android 13+
         } else {
-            permission = Manifest.permission.WRITE_EXTERNAL_STORAGE; // Para Android 12 e anteriores
+            permission = Manifest.permission.WRITE_EXTERNAL_STORAGE; // Android <= 12
         }
 
-        // Verifica se a permissão já foi concedida
-        if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(context, "Permissão de armazenamento já concedida.", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(context, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(context,
+                    "Permissão de armazenamento já concedida.",
+                    Toast.LENGTH_SHORT).show();
         } else {
-            // Solicita a permissão em tempo de execução
             requestPermissionLauncher.launch(permission);
         }
     }

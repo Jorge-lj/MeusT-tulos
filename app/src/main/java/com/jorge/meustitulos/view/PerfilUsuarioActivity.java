@@ -65,7 +65,7 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
         senhaEditText = findViewById(R.id.senha_perfil);
         btnSalvarAlteracoes = findViewById(R.id.btn_salvar_alteracoes_perfil);
         btnExcluirConta = findViewById(R.id.btn_excluir_conta);
-        imageViewFotoPerfil = findViewById(R.id.imageView_foto_perfil); // Referência à ImageView
+        imageViewFotoPerfil = findViewById(R.id.imageView_foto_perfil);
         btnSalvarFotoPerfilGaleria = findViewById(R.id.btn_salvar_foto_perfil_galeria);
 
         requestPermissionLauncher = registerForActivityResult(
