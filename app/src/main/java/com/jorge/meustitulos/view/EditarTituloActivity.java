@@ -33,8 +33,8 @@ public class EditarTituloActivity extends AppCompatActivity {
 
     private EditText tituloEditText, notaEditText, comentarioEditText;
     private Spinner spinnerTipo, spinnerGenero, spinnerStatus;
-    private Button btnSalvarAlteracoes, btnSalvarCapaGaleria; // Removido btnSelecionarImagem
-    private ImageView imageViewPreviewCapa; // Agora é clicável
+    private Button btnSalvarAlteracoes, btnSalvarCapaGaleria;
+    private ImageView imageViewPreviewCapa;
 
     private TitulosController titulosController;
     private Titulo tituloAtual;
@@ -65,7 +65,7 @@ public class EditarTituloActivity extends AppCompatActivity {
         spinnerTipo = findViewById(R.id.spinner_tipo);
         spinnerGenero = findViewById(R.id.spinner_genero);
         spinnerStatus = findViewById(R.id.spinner_status);
-        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa); // Referência à ImageView
+        imageViewPreviewCapa = findViewById(R.id.imageView_preview_capa);
         btnSalvarCapaGaleria = findViewById(R.id.btn_salvar_capa_galeria);
 
         ArrayAdapter<CharSequence> adapterTipo = ArrayAdapter.createFromResource(this,

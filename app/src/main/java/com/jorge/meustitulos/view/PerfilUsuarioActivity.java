@@ -171,7 +171,6 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
         nomeCompletoEditText.setText(usuario.getNomeCompleto());
         emailEditText.setText(usuario.getEmail());
         nomeUsuarioEditText.setText(usuario.getNomeUsuario());
-        senhaEditText.setText(""); // Não preenche a senha por segurança
 
         Log.d(TAG, "preencherCampos: Foto de perfil URI: " + usuario.getFotoPerfilUri());
         if (usuario.getFotoPerfilUri() != null && !usuario.getFotoPerfilUri().isEmpty()) {

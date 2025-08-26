@@ -69,7 +69,6 @@ public class TitulosController {
         return titulo;
     }
 
-    // NOVO: Buscar todos os títulos de um usuário específico
     public List<Titulo> buscarTitulosDoUsuario(int userId) {
         List<Titulo> titulosList = new ArrayList<>();
         Cursor cursor = db.buscarTitulosPorUsuario(userId); // Chama o método do DB com userId
